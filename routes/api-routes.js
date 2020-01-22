@@ -33,5 +33,15 @@ module.exports = function (app) {
         })
     })
 
+    app.get("/api/workouts/range", function(req, res){
+        db.Workout.find({})
+        .then(function (workouts) {
+            res.json(workouts)
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
+    })
+
 
 };
