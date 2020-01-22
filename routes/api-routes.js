@@ -22,5 +22,16 @@ module.exports = function (app) {
             })
     })
 
+    app.put("/api/workouts/:id", function (req, res){
+        console.log(req.body)
+        db.Workout.where('_id', req.params.id).update({$push: {"exercises": req.body}})
+        .then(function(results){
+            res.json(results)
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
+    })
+
 
 };
